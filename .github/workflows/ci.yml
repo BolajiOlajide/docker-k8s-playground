@@ -24,7 +24,7 @@ jobs:
           key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}
 
       - name: Install dependencies
-        run: yarn
+        run: npm ci
 
   test:
     needs: setup
@@ -45,4 +45,4 @@ jobs:
           key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}
 
       - name: Run test for Frontend
-        run: yarn test
+        run: npm run test
