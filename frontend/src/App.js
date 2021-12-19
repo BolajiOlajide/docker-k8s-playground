@@ -1,4 +1,6 @@
-import "./App.css";
+import { useEffect } from 'react';
+
+import './App.css';
 import imageDaniel from './images/image-daniel.jpg';
 import imageJeanette from './images/image-jeanette.jpg';
 import imageJonathan from './images/image-jonathan.jpg';
@@ -6,6 +8,10 @@ import imageKira from './images/image-kira.jpg';
 import imagePatrick from './images/image-patrick.jpg';
 
 function App() {
+  useEffect(() => {
+    document.title = 'Brand New Title'
+  });
+
   return (
     <div>
       <main className="testimonial-grid">
