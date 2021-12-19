@@ -14,7 +14,7 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-const pgClient = Pool({
+const pgClient = new Pool({
   user: postgres.user,
   host: postgres.host,
   database: postgres.name,
@@ -36,7 +36,7 @@ const redisClient = redis.createClient({
   retry_strategy: () => 1000
 });
 
-const hgetAllAsync = promisify(redisClient.hgetAll).bind(redisClient);
+const hgetAllAsync = promisify(redisClient.hgetall).bind(redisClient);
 const hsetAsync = promisify(redisClient.hset).bind(redisClient);
 
 const pub = redisClient.duplicate();
