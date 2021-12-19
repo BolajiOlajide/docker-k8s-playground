@@ -44,5 +44,11 @@ jobs:
           path: '**/node_modules'
           key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}
 
+      - name: check whats going on
+        run: |
+          ls
+          echo "here's the ish"
+          pwd
+
       - name: Run test for Frontend
         run: npm run test
