@@ -24,7 +24,7 @@ jobs:
 
       - uses: actions/cache@v2
         with:
-          path: '**/node_modules'
+          path: '**/frontend/node_modules'
           key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}
 
       - name: Install dependencies
@@ -48,7 +48,7 @@ jobs:
       - name: Load node_modules
         uses: actions/cache@v2
         with:
-          path: '**/node_modules'
+          path: '**/frontend/node_modules'
           key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}
 
       - name: check whats going on
