@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  redis-server:
+    image: redis
+
+  node-app:
+    restart: always # specifies the restart policy for this container
+    build: .
+    ports:
+      - "5000:8080"
