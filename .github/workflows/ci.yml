@@ -10,6 +10,9 @@ on:
 jobs:
   setup:
     runs-on: ubuntu-18.04
+    defaults:
+      run:
+        working-directory: ./frontend
 
     steps:
       - uses: actions/checkout@v2
@@ -18,9 +21,6 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 16.x
-
-      - name: Navigate to frontend directory
-        run: cd frontend
 
       - uses: actions/cache@v2
         with:
@@ -33,6 +33,9 @@ jobs:
   test:
     needs: setup
     runs-on: ubuntu-18.04
+    defaults:
+      run:
+        working-directory: ./frontend
 
     steps:
       - uses: actions/checkout@v2
@@ -41,9 +44,6 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 16.x
-
-      - name: Navigate to frontend directory
-        run: cd frontend
 
       - name: Load node_modules
         uses: actions/cache@v2
