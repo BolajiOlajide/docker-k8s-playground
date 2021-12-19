@@ -25,7 +25,7 @@ jobs:
           key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}
 
       - name: Install dependencies
-        run: npm i
+        run: cd frontend && npm i
 
   test:
     needs: setup
@@ -52,4 +52,4 @@ jobs:
           pwd
 
       - name: Run test for Frontend
-        run: npm run test
+        run: cd frontend && npm run test
