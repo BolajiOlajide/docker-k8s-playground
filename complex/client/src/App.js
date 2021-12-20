@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 
 import OtherPage from "./OtherPage";
 import Fib from "./Fib";
@@ -6,13 +6,17 @@ import Fib from "./Fib";
 function App() {
   return (
     <Router>
-      <header>
-        <Link to="/">Home</Link>
-        <Link to="/otherpage">Other Page</Link>
-      </header>
+      <main>
+        <header>
+          <Link to="/">Home</Link>
+          <Link to="/otherpage">Other Page</Link>
+        </header>
 
-      <Route exact path="/" component={Fib} />
-      <Route path="/otherpage" component={OtherPage} />
+        <Routes>
+          <Route exact path="/" element={<Fib />} />
+          <Route path="/otherpage" element={<OtherPage />} />
+        </Routes>
+      </main>
     </Router>
   );
 }

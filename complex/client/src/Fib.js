@@ -51,19 +51,24 @@ const Fib = () => {
 
     await fetch('/api/values', {
       method: 'POST',
-      data: JSON.stringify({ index: state.index })
-    })
+      body: JSON.stringify({ index: state.index }),
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      redirect: 'follow',
+    });
 
     setState(prevState => ({
       ...prevState,
       index: ''
     }));
-  }
+  };
 
   return (
     <div>
       <form onSubmit={handleSubmit}>
         <label>Enter your index</label>
+        <br />
         <input value={state.index} onChange={event => setState(prevState => ({
           ...prevState,
           index: event.target.value

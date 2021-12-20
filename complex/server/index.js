@@ -59,6 +59,7 @@ app.get('/values/current', async (req, res) => {
 
 app.post('/values', async (req, res) => {
   const { index } = req.body;
+  console.log(JSON.stringify({ index }, null, 2), '<====', req.body);
 
   const numericIdx = parseInt(index);
 
