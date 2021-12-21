@@ -1,0 +1,25 @@
+name: Complex Service CI
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+    - 'complex/**'
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-18.04
+    defaults:
+      run:
+        working-directory: ./complex
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build tagged docker image
+        run: docker build -f Dockerfile.dev . -t cooproton12/complex-${{ github.sha }}
+
+      - name: Run test
+        run: docker run -e CI=true cooproton12/complex-${{ github.sha }} npm run test
+
