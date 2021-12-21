@@ -57,7 +57,7 @@ services:
   nginx:
     build:
       context: ./nginx
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
     restart: always
     depends_on:
       - client
