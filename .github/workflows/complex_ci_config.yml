@@ -23,3 +23,90 @@ jobs:
       - name: Run test
         run: docker run -e CI=true cooproton12/complex-client-${{ github.sha }} yarn test
 
+  build_client:
+    needs: client_test
+    runs-on: ubuntu-18.04
+    defaults:
+      run:
+        working-directory: ./complex/client
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_ID }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build tagged docker image for client service
+        run: docker build . -t cooproton12/complex-client
+
+      - name: Push client image to dockerhub
+        run: docker push cooproton12/complex-client
+
+  build_nginx:
+    needs: client_test
+    runs-on: ubuntu-18.04
+    defaults:
+      run:
+        working-directory: ./complex/nginx
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_ID }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build tagged docker image for nginx service
+        run: docker build . -t cooproton12/complex-nginx
+
+      - name: Push nginx image to dockerhub
+        run: docker push cooproton12/complex-nginx
+
+  build_server:
+    needs: client_test
+    runs-on: ubuntu-18.04
+    defaults:
+      run:
+        working-directory: ./complex/server
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_ID }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build tagged docker image for server service
+        run: docker build . -t cooproton12/complex-server
+
+      - name: Push server image to dockerhub
+        run: docker push cooproton12/complex-server
+
+  build_worker:
+    needs: client_test
+    runs-on: ubuntu-18.04
+    defaults:
+      run:
+        working-directory: ./complex/worker
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_ID }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build tagged docker image for worker service
+        run: docker build . -t cooproton12/complex-worker
+
+      - name: Push worker image to dockerhub
+        run: docker push cooproton12/complex-worker
