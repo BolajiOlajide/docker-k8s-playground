@@ -34,6 +34,8 @@ jobs:
       run:
         working-directory: ./frontend
 
+    if: github.repository_owner == 'BolajiOlajide'
+
     steps:
       - uses: actions/checkout@v2
 
@@ -44,7 +46,8 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.SECRET_ACCESS_KEY }}
+          # dont want this to work lol
+          # aws-secret-access-key: ${{ secrets.SECRET_ACCESS_KEY }}
           aws-region: "eu-central-1"
 
       - name: Upload package to S3 bucket
