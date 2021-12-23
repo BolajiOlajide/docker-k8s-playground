@@ -1,6 +1,6 @@
-[![Sample Frontend CI](https://github.com/BolajiOlajide/docker-k8s-playground/actions/workflows/ci.yml/badge.svg)](https://github.com/BolajiOlajide/docker-k8s-playground/actions/workflows/ci.yml)
+[![Sample Docker Frontend CI](https://github.com/BolajiOlajide/docker-k8s-playground/actions/workflows/frontend_ci_with_docker.yml/badge.svg)](https://github.com/BolajiOlajide/docker-k8s-playground/actions/workflows/frontend_ci_with_docker.yml)
 
-[![Sample Docker Frontend CI](https://github.com/BolajiOlajide/docker-k8s-playground/actions/workflows/ci_with_docker.yml/badge.svg)](https://github.com/BolajiOlajide/docker-k8s-playground/actions/workflows/ci_with_docker.yml)
+[![Sample Frontend CI](https://github.com/BolajiOlajide/docker-k8s-playground/actions/workflows/frontend_ci.yml/badge.svg)](https://github.com/BolajiOlajide/docker-k8s-playground/actions/workflows/frontend_ci.yml)
 
 [![Complex Service CI](https://github.com/BolajiOlajide/docker-k8s-playground/actions/workflows/complex_ci_config.yml/badge.svg)](https://github.com/BolajiOlajide/docker-k8s-playground/actions/workflows/complex_ci_config.yml)
 
