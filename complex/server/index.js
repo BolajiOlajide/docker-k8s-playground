@@ -22,6 +22,14 @@ const pgClient = new Pool({
   password: postgres.password
 });
 
+console.log('pg credentials ====>> ', {
+  user: postgres.user,
+  host: postgres.host,
+  database: postgres.name,
+  port: postgres.port,
+  password: postgres.password
+});
+
 pgClient.on('error', () => console.log('lost pg connection. please check again'));
 
 pgClient.on('connect', (client) => {
