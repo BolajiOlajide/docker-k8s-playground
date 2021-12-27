@@ -19,23 +19,19 @@ const pgClient = new Pool({
   host: postgres.host,
   database: postgres.name,
   port: postgres.port,
-  password: postgres.password
-});
-
-console.log('pg credentials ====>> ', {
-  user: postgres.user,
-  host: postgres.host,
-  database: postgres.name,
-  port: postgres.port,
-  password: postgres.password
+  password: postgres.password,
+  connectionTimeoutMillis: 20000
 });
 
 pgClient.on('error', () => console.log('lost pg connection. please check again'));
 
-pgClient.on('connect', (client) => {
-  client
-    .query('CREATE TABLE IF NOT EXISTS values (number INT)')
-    .catch((err) => console.error(err));
+pgClient.on('connect', async (client) => {
+  try {
+    await client.query('CREATE TABLE IF NOT EXISTS values (number INT)')
+  } catch (error) {
+    console.log(JSON.stringify({ message: error.message, stack: error.stack }, null, 2));
+    console.error(error);
+  }
 });
 
 const redisClient = redis.createClient({
